@@ -1,6 +1,5 @@
-import { useState } from 'react'
 import './App.css'
-import { Sky } from "@react-three/drei";
+import { PointerLockControls, Sky } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 
 function App() {
@@ -8,6 +7,7 @@ function App() {
     <>
       <Canvas>
         <Sky/>
+        <PointerLockControls/>
       </Canvas>
     </>
   )
