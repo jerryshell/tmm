@@ -9,7 +9,7 @@ export const Player = () => {
     return {
       mass: 1,
       type: 'Dynamic',
-      position: [5, 5, 5],
+      position: [0, 1, 0],
     }
   })
 
