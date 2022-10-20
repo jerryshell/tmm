@@ -3,6 +3,7 @@ import { PointerLockControls, Sky } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/cannon";
 import { Ground } from "./components/Ground";
+import { Player } from "./components/Player";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <PointerLockControls/>
         <Physics>
           <Ground/>
+          <Player/>
         </Physics>
       </Canvas>
     </>
