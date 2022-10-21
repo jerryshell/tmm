@@ -24,10 +24,23 @@ export const Player = () => {
     api.position.subscribe(position => {
       pos.current = position
     })
-  })
+  }, [])
+
+  const vel = useRef([0, 0, 0])
+  useEffect(() => {
+    api.velocity.subscribe(velocity => {
+      vel.current = velocity
+    })
+  }, [])
 
   useFrame(() => {
+    // camera
     camera.position.copy(new Vector3(pos.current[0], pos.current[1], pos.current[2]))
+
+    // jump
+    if (actions.jump) {
+      api.velocity.set(vel.current[0], 10, vel.current[2])
+    }
   })
 
   return (
