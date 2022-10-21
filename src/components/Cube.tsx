@@ -85,6 +85,8 @@ export const Cube = ({ position, textureName, addCube }: {
             <meshStandardMaterial
                 map={texture}
                 color={hoverFlag ? 'grey' : 'white'}
+                opacity={textureName === 'glassTexture' ? 0.7 : 1}
+                transparent={true}
             />
         </mesh>
     )
