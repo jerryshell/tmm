@@ -5,8 +5,11 @@ import { Physics } from "@react-three/cannon";
 import { Ground } from "./components/Ground";
 import { Player } from "./components/Player";
 import { Cube } from './components/Cube';
+import { useRecoilState } from 'recoil';
+import { CubeDataListAtom } from './atoms/CubeDataListAtom';
 
 function App() {
+  const [cubeDataList, setCubeDataList] = useRecoilState(CubeDataListAtom)
   return (
     <>
       <Canvas>
@@ -16,9 +19,9 @@ function App() {
         <Physics>
           <Ground />
           <Player />
-          <Cube position={[-2, 0, -2]} textureName={'dirtTexture'} />
-          <Cube position={[-4, 0, -4]} textureName={'glassTexture'} />
-          <Cube position={[-6, 0, -6]} textureName={'logTexture'} />
+          {cubeDataList.map(cubeData => (
+            <Cube key={cubeData.id} position={cubeData.position} textureName={cubeData.textureName} />
+          ))}
         </Physics>
       </Canvas>
       <div className="center">+</div>
