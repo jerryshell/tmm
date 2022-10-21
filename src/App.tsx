@@ -16,7 +16,9 @@ function App() {
         <Physics>
           <Ground />
           <Player />
-          <Cube position={[-2, 0, -2]} />
+          <Cube position={[-2, 0, -2]} textureName={'dirtTexture'} />
+          <Cube position={[-4, 0, -4]} textureName={'glassTexture'} />
+          <Cube position={[-6, 0, -6]} textureName={'logTexture'} />
         </Physics>
       </Canvas>
       <div className="center">+</div>

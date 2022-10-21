@@ -1,9 +1,10 @@
 import { useBox } from "@react-three/cannon"
 import { Mesh } from "three"
-import { dirtTexture } from "../images/textures"
+import textures from "../images/textures"
 
-export const Cube = ({ position }: {
-    position: [x: number, y: number, z: number]
+export const Cube = ({ position, textureName }: {
+    position: [x: number, y: number, z: number],
+    textureName: string,
 }) => {
     const [ref] = useBox<Mesh>(() => {
         return {
@@ -11,11 +12,13 @@ export const Cube = ({ position }: {
             position,
         }
     })
+    const texture = textures[textureName as keyof typeof textures]
+
     return (
         <mesh ref={ref}>
             <boxGeometry />
             {/* <meshStandardMaterial color="red" /> */}
-            <meshStandardMaterial map={dirtTexture} />
+            <meshStandardMaterial map={texture} />
         </mesh>
     )
 }

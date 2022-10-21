@@ -23,7 +23,7 @@ grassTexture.magFilter = NearestFilter
 logTexture.magFilter = NearestFilter
 woodTexture.magFilter = NearestFilter
 
-export {
+export default {
   groundTexture,
   dirtTexture,
   glassTexture,
