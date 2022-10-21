@@ -17,6 +17,12 @@ const grassTexture = new TextureLoader().load(grassImage)
 const logTexture = new TextureLoader().load(logImage)
 const woodTexture = new TextureLoader().load(woodImage)
 
+dirtTexture.magFilter = NearestFilter
+glassTexture.magFilter = NearestFilter
+grassTexture.magFilter = NearestFilter
+logTexture.magFilter = NearestFilter
+woodTexture.magFilter = NearestFilter
+
 export {
   groundTexture,
   dirtTexture,
