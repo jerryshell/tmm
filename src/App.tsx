@@ -9,14 +9,15 @@ function App() {
   return (
     <>
       <Canvas>
-        <Sky/>
-        <ambientLight intensity={0.5}/>
-        <PointerLockControls/>
+        <Sky />
+        <ambientLight intensity={0.5} />
+        <PointerLockControls />
         <Physics>
-          <Ground/>
-          <Player/>
+          <Ground />
+          <Player />
         </Physics>
       </Canvas>
+      <div className="center">+</div>
     </>
   )
 }
