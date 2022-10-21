@@ -60,6 +60,7 @@ export const Player = () => {
     const finalDirection = new Vector3()
     finalDirection.addVectors(frontDirection, sideDirection)
     finalDirection.multiplyScalar(SPEED)
+    finalDirection.applyEuler(camera.rotation)
     api.velocity.set(finalDirection.x, vel.current[1], finalDirection.z)
 
     // jump
