@@ -10,6 +10,7 @@ import { CubeDataListAtom } from './atoms/CubeDataListAtom';
 import { CubeData } from './interfaces/CubeData';
 import { nanoid } from 'nanoid';
 import { CubeTextureAtom } from './atoms/CubeTextureAtom';
+import { TextureSelector } from './components/TextureSelector';
 
 function App() {
   const [cubeDataList, setCubeDataList] = useRecoilState(CubeDataListAtom)
@@ -39,6 +40,7 @@ function App() {
         </Physics>
       </Canvas>
       <div className="center">+</div>
+      <TextureSelector />
     </>
   )
 }

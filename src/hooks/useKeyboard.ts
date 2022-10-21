@@ -16,6 +16,21 @@ const actionByKeyCode = (keyCode: string) => {
     if (keyCode === 'Space') {
         return 'jump'
     }
+    if (keyCode === 'Digit1') {
+        return 'dirtTexture'
+    }
+    if (keyCode === 'Digit2') {
+        return 'glassTexture'
+    }
+    if (keyCode === 'Digit3') {
+        return 'grassTexture'
+    }
+    if (keyCode === 'Digit4') {
+        return 'logTexture'
+    }
+    if (keyCode === 'Digit5') {
+        return 'woodTexture'
+    }
     return ''
 }
 
@@ -26,6 +41,11 @@ export const useKeyboard = () => {
         moveLeft: false,
         moveRight: false,
         jump: false,
+        dirtTexture: false,
+        glassTexture: false,
+        grassTexture: false,
+        logTexture: false,
+        woodTexture: false,
     })
 
     const handleKeyDown = (e: KeyboardEvent) => {
