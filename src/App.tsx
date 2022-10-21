@@ -32,7 +32,7 @@ function App() {
           <Ground addCube={addCube} />
           <Player />
           {cubeDataList.map(cubeData => (
-            <Cube key={cubeData.id} position={cubeData.position} textureName={cubeData.textureName} />
+            <Cube key={cubeData.id} position={cubeData.position} textureName={cubeData.textureName} addCube={addCube} />
           ))}
         </Physics>
       </Canvas>
