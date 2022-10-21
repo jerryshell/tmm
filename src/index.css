@@ -16,3 +16,14 @@ body,
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.texture-selector {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(4);
+}
+
+.texture-selector .active {
+  border: solid 1px red;
+}
