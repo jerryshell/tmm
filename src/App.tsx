@@ -16,7 +16,7 @@ function App() {
         <Physics>
           <Ground />
           <Player />
-          <Cube />
+          <Cube position={[-2, 0, -2]} />
         </Physics>
       </Canvas>
       <div className="center">+</div>
