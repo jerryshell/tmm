@@ -1,6 +1,8 @@
 import { useBox } from "@react-three/cannon"
 import { ThreeEvent } from "@react-three/fiber"
+import { useRecoilState } from "recoil"
 import { Mesh } from "three"
+import { CubeDataListAtom } from "../atoms/CubeDataListAtom"
 import textures from "../images/textures"
 
 export const Cube = ({ position, textureName, addCube }: {
@@ -8,12 +10,15 @@ export const Cube = ({ position, textureName, addCube }: {
     textureName: string,
     addCube: Function,
 }) => {
+    const [cubeDataList, setCubeDataList] = useRecoilState(CubeDataListAtom)
+
     const [ref] = useBox<Mesh>(() => {
         return {
             type: 'Static',
             position,
         }
     })
+
     const texture = textures[textureName as keyof typeof textures]
 
     const handleClick = (e: ThreeEvent<MouseEvent>) => {
@@ -25,6 +30,14 @@ export const Cube = ({ position, textureName, addCube }: {
         const cubeFace = Math.floor(e.faceIndex / 2)
         console.log('cube click cubeFace', cubeFace)
         const [x, y, z] = Object.values(ref.current!.position)
+        if (e.nativeEvent.altKey) {
+            const newCubeDataList = cubeDataList.filter(item => {
+                const [itemX, itemY, itemZ] = item.position
+                return itemX !== x || itemY !== y || itemZ !== z
+            })
+            setCubeDataList(newCubeDataList)
+            return
+        }
         if (cubeFace === 0) {
             addCube(x + 1, y, z)
             return
