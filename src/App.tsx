@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/cannon";
 import { Ground } from "./components/Ground";
 import { Player } from "./components/Player";
+import { Cube } from './components/Cube';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Physics>
           <Ground />
           <Player />
+          <Cube />
         </Physics>
       </Canvas>
       <div className="center">+</div>
