@@ -5,7 +5,11 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useKeyboard } from "../hooks/useKeyboard";
 
 export const Player = () => {
-  useKeyboard();
+  const actions = useKeyboard();
+  useEffect(() => {
+    console.log('actions', actions)
+  }, [actions])
+
   const { camera } = useThree()
   const [ref, api] = useSphere<Mesh>(() => {
     return {
@@ -18,7 +22,6 @@ export const Player = () => {
   const pos = useRef([0, 0, 0])
   useEffect(() => {
     api.position.subscribe(position => {
-      console.log('position', position)
       pos.current = position
     })
   })
