@@ -9,15 +9,17 @@ import { useRecoilState } from 'recoil';
 import { CubeDataListAtom } from './atoms/CubeDataListAtom';
 import { CubeData } from './interfaces/CubeData';
 import { nanoid } from 'nanoid';
+import { CubeTextureAtom } from './atoms/CubeTextureAtom';
 
 function App() {
   const [cubeDataList, setCubeDataList] = useRecoilState(CubeDataListAtom)
+  const [cubeTexture, setCubeTexture] = useRecoilState(CubeTextureAtom)
 
   const addCube = (x: number, y: number, z: number) => {
     const newCube: CubeData = {
       id: nanoid(),
       position: [x, y, z],
-      textureName: 'dirtTexture',
+      textureName: cubeTexture,
     }
     setCubeDataList(cubeDataList.concat(newCube))
   }
