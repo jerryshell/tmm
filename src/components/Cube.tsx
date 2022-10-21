@@ -1,5 +1,6 @@
 import { useBox } from "@react-three/cannon"
 import { ThreeEvent } from "@react-three/fiber"
+import { useState } from "react"
 import { useRecoilState } from "recoil"
 import { Mesh } from "three"
 import { CubeDataListAtom } from "../atoms/CubeDataListAtom"
@@ -10,6 +11,8 @@ export const Cube = ({ position, textureName, addCube }: {
     textureName: string,
     addCube: Function,
 }) => {
+    const [hoverFlag, setHoverFlag] = useState(false)
+
     const [cubeDataList, setCubeDataList] = useRecoilState(CubeDataListAtom)
 
     const [ref] = useBox<Mesh>(() => {
@@ -68,10 +71,21 @@ export const Cube = ({ position, textureName, addCube }: {
         <mesh
             onClick={handleClick}
             ref={ref}
+            onPointerMove={e => {
+                e.stopPropagation()
+                setHoverFlag(true)
+            }}
+            onPointerOut={e => {
+                e.stopPropagation()
+                setHoverFlag(false)
+            }}
         >
             <boxGeometry />
             {/* <meshStandardMaterial color="red" /> */}
-            <meshStandardMaterial map={texture} />
+            <meshStandardMaterial
+                map={texture}
+                color={hoverFlag ? 'grey' : 'white'}
+            />
         </mesh>
     )
 }
