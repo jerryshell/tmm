@@ -7,9 +7,21 @@ import { Player } from "./components/Player";
 import { Cube } from './components/Cube';
 import { useRecoilState } from 'recoil';
 import { CubeDataListAtom } from './atoms/CubeDataListAtom';
+import { CubeData } from './interfaces/CubeData';
+import { nanoid } from 'nanoid';
 
 function App() {
   const [cubeDataList, setCubeDataList] = useRecoilState(CubeDataListAtom)
+
+  const addCube = (x: number, y: number, z: number) => {
+    const newCube: CubeData = {
+      id: nanoid(),
+      position: [x, y, z],
+      textureName: 'dirtTexture',
+    }
+    setCubeDataList(cubeDataList.concat(newCube))
+  }
+
   return (
     <>
       <Canvas>
@@ -17,7 +29,7 @@ function App() {
         <ambientLight intensity={0.5} />
         <PointerLockControls />
         <Physics>
-          <Ground />
+          <Ground addCube={addCube} />
           <Player />
           {cubeDataList.map(cubeData => (
             <Cube key={cubeData.id} position={cubeData.position} textureName={cubeData.textureName} />
